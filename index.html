@@ -6,6 +6,7 @@
     <title>Gym trainer | Template </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
@@ -69,7 +70,7 @@
                         </div>          
                         <!-- Header-btn -->
                         <div class="header-btns d-none d-lg-block f-right">
-                           <a href="contact.html" class="btn">Contact me</a>
+                           <div id="my-signin2"></div>
                        </div>
                        <!-- Mobile Menu -->
                        <div class="col-12">
@@ -206,7 +207,7 @@
                         <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/gallery2.png);"></div>
                         <div class="overlay">
                             <div class="overlay-content">
-                                <h3>Muscle gaining </h3>
+                                <h3>Muscle gaining <div id="my-signin2"></div></h3>
                                 <a href="gallery.html"><i class="ti-plus"></i></a>
                             </div>
                         </div>
@@ -665,6 +666,27 @@
 <!-- Jquery Plugins, main Jquery -->	
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
+<script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
 </body>
 </html>
