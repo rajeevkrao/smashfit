@@ -1,7 +1,7 @@
 {
-  "name": "zacson-master",
+  "name": "smashfit",
   "version": "1.0.0",
-  "description": "Thank you for using our template!",
+  "description": "Online Fitness-Training Management",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
