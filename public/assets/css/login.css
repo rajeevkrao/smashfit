@@ -1,0 +1,28 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+.lead, .h-custom a.text-body,label.form-label, p.text-center, label.form-check-label, p.small{
+    color:white !important;
+    font-size:1.5em !important;
+}
+
+#register{
+    color:white !important;
+    font-size:1.2em !important;
+}
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+#my-signin2{
+    margin:0 auto;
+}
