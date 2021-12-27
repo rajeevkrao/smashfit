@@ -7895,4 +7895,10 @@ del {
   margin-bottom: 10px;
 }
 
+@media(min-width:992px){
+  li #login{
+    display:none;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
