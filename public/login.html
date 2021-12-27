@@ -252,6 +252,10 @@
 <script>
     function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+      console.log(googleUser.getBasicProfile().getId())
+      localStorage.setItem("session",googleUser.getAuthResponse().id_token);
+      console.log(googleUser.getAuthResponse());
+      //fetch('/auth')
     }
     function onFailure(error) {
       console.log(error);
