@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
-const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_CLUSTER.CONNECT}`
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_CLUSTER_CONNECT}`
 
 
 exports.users = (callback) => {
@@ -9,7 +9,7 @@ exports.users = (callback) => {
 	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
 	  }
     console.log("connected");
-	  callback(client.db("carrybot").collection("users"));
+	  callback(client.db("users").collection("users"));
 	  client.close();
 	})
 }
