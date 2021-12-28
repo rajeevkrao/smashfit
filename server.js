@@ -3,6 +3,7 @@ const bodyParser = require("body-parser")
 require('dotenv').config();
 
 var auth = require("./modules/auth.js")
+var mongod = require("./modules/mongodb.js");
 
 const app = express();
 
@@ -16,7 +17,18 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/save-auth', (req,res)=>{	
-	console.log(req.body.token)
+	//console.log(req.body)
+	if(req.body.authType=="google"){
+		auth.gauth(req.body.token)
+		.then((r)=>{
+			mongod.addUser({name:r.name,gid:r.sub,email:r.email}, err=>{
+				if(err) console.log(err)
+			})
+		})
+		.catch(err=>{
+			console.log("yes consisted")
+		})
+	}
 	res.end();
 })
 

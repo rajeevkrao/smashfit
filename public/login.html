@@ -254,9 +254,15 @@
     function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
       console.log(googleUser.getBasicProfile().getId())
-      localStorage.setItem("session",googleUser.getAuthResponse().id_token);
-      console.log(googleUser.getAuthResponse());
-      //fetch('/auth')
+      localStorage.setItem("gtoken",googleUser.getAuthResponse().id_token);
+      fetch('/save-auth', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({authType:"google", token:googleUser.getAuthResponse().id_token})
+      });
     }
     function onFailure(error) {
       console.log(error);

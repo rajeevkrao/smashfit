@@ -8,9 +8,26 @@ exports.tokens = (callback) => {
 		if(err) {
 	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
 	  }
-    console.log("connected");
+
 	  callback(client.db("users").collection("tokens"));
 	  client.close();
+	})
+}
+
+
+exports.addUser = (doc,callback) =>{
+	MongoClient.connect(uri, function(err, client) {
+		if(err) {
+	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+	  	}
+	  
+	  client.db("users").collection("details").insertOne(doc)
+	  .then(()=>{
+		client.close();
+	  })
+	  .catch(()=>{
+		  callback("User already exist");
+	  })
 	})
 }
 
@@ -19,6 +36,9 @@ MongoClient.connect(uri, function(err, client) {
         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
         return;
     }
-console.log("connected");
-client.close();
+	console.log("mongodb database connected");
+
+	//client.db("users").collection("tokens").find({token})
+	client.db("users").collection("tokens").find({})
+	client.close();
 })
