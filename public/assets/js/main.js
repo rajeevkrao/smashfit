@@ -211,3 +211,7 @@
   });
 
 })(jQuery);
+
+
+document.querySelector(".starter").style.paddingTop = document.querySelector(".header-area").clientHeight + "px"
+  
