@@ -32,4 +32,4 @@ app.post('/save-auth', (req,res)=>{
 	res.end();
 })
 
-app.listen(5000)
+app.listen(process.env.PORT)
