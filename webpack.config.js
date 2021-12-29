@@ -4,7 +4,9 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  entry: './webpack/app.jsx',
+  entry: {
+      app: './webpack/app.jsx'
+    },
   module: {
     rules: [
       {
@@ -57,11 +59,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'bundle'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   devServer: {
     contentBase: './dist',
     hot: true
