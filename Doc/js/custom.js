@@ -5,3 +5,6 @@ $(function() {
     
 
 });
+
+
+document.querySelector("div.header-btns a.btn").innerHTML = "Logout"

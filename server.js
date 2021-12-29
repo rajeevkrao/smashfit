@@ -16,6 +16,7 @@ app.get('/',(req,res)=>{
 	res.sendFile(__dirname+"/index.html")
 })
 
+
 app.post('/save-auth', (req,res)=>{	
 	//console.log(req.body)
 	if(req.body.authType=="google"){
@@ -32,4 +33,4 @@ app.post('/save-auth', (req,res)=>{
 	res.end();
 })
 
-app.listen(5000)
+app.listen(process.env.PORT)
