@@ -16,6 +16,7 @@ app.get('/',(req,res)=>{
 	res.sendFile(__dirname+"/index.html")
 })
 
+
 app.post('/save-auth', (req,res)=>{	
 	//console.log(req.body)
 	if(req.body.authType=="google"){
