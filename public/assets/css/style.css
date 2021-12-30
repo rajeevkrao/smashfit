@@ -3476,11 +3476,17 @@ hr {
   .slider-area .hero__caption span {
     font-size: 53px;
   }
+  .sliderx-area .hero__caption span {
+    font-size: 53px;
+  }
 }
 
 @media (max-width: 575px) {
   /* line 58, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_h1-hero.scss */
   .slider-area .hero__caption span {
+    font-size: 33px;
+  }
+  .sliderx-area .hero__caption span {
     font-size: 33px;
   }
 }
