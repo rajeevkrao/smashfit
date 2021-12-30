@@ -17,6 +17,10 @@ app.get('/',(req,res)=>{
 	res.sendFile(__dirname+"/index.html")
 })
 
+app.get('/workout', (req,res)=>{
+	res.sendFile(__dirname+"\\public/react.html")
+})
+
 app.use(function(request, response, next) {
     if (process.env.NODE_ENV != 'development' && !request.secure) {
        return response.redirect("https://" + request.headers.host + request.url);

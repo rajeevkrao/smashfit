@@ -6,7 +6,8 @@ import {BrowserRouter} from 'react-router-dom';
 //import Routes from './route'
 
 import { Route, Routes } from'react-router-dom';
-import Home from'./components/home';
+import hit from'./workouts/hit.js';
+import hit from'./workouts/baltrain.js';
 // import VideoSpam from'./pages/VideoSpam';
 // import Examp from'./pages/examp';
 // import Login from'./pages/Login';
@@ -17,7 +18,8 @@ import Home from'./components/home';
 render((
 <BrowserRouter>
   <Routes>
-    <Route path="/workoutgifs.html" element={<Home />} />
+    <Route path="/workouts/hit" element={<hit />} />
+	<Route path="/workouts/baltrain" element={<baltrain />} />
   </Routes>
 </BrowserRouter> 
 ), document.getElementById('App'));
