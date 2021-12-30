@@ -32,10 +32,10 @@ module.exports = {
           'css-loader'
         ]
       },
-      {
+      /*{
         test: /\.(jpe?g|png|gif|svg)$/i, 
         loader: "file-loader?name=/public/icons/[name].[ext]"
-      },
+      },*/
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
@@ -47,11 +47,11 @@ module.exports = {
             }
           }
         ]
-      },
-      {
+      }
+      /*{
         test: /\.scss$/,
         loader: 'style-loader!css-loader!sass-loader'
-      }
+      }*/
     ]
   },
   resolve: {
