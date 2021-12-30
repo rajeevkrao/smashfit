@@ -17,7 +17,7 @@ import Home from'./components/home';
 render((
 <BrowserRouter>
   <Routes>
-    <Route path="/workoutgifs.html" element={<Home />} />
+    <Route path="/react.html" element={<Home />} />
   </Routes>
 </BrowserRouter> 
 ), document.getElementById('App'));

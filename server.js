@@ -17,8 +17,8 @@ app.get('/',(req,res)=>{
 	res.sendFile(__dirname+"/index.html")
 })
 
-app.get('/workout', (req,res)=>{
-	res.sendFile(__dirname+"\\public/react.html")
+app.get('/workouts/*', (req,res)=>{
+	res.sendFile(__dirname+"/views/workouts.html")
 })
 
 app.use(function(request, response, next) {

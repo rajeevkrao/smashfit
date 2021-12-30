@@ -5,7 +5,8 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'development',
   entry: {
-      app: './webpack/app.jsx'
+      app: './webpack/app.jsx',
+      workouts: './webpack/workouts.jsx'
     },
   module: {
     rules: [
