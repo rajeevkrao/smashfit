@@ -68,7 +68,7 @@ var App = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("span", {
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s"
-      }, "High Intensity Training")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
+      }, "Balance Training")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
@@ -76,14 +76,14 @@ var App = /*#__PURE__*/function (_Component) {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\flutter-kick.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\flutter-kick.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\bicycle.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\bicycle.gif"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
@@ -92,28 +92,28 @@ var App = /*#__PURE__*/function (_Component) {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\Inchworm.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\Inchworm.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\plank-Taps.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\plank-Taps.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\push-up.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\push-up.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\Triceps-Dips.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\Triceps-Dips.gif"
       })))));
     }
   }]);
