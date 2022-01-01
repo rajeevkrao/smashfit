@@ -22,7 +22,7 @@ class App extends Component {
                         <div className="row">
                             <div className="col-xl-9 col-lg-9 col-md-10">
                                 <div className="hero__caption">
-                                    <span data-animation="fadeInLeft" data-delay="0.09s">High Intensity Training</span>
+                                    <span data-animation="fadeInLeft" data-delay="0.09s">Balance Training</span>
                                 </div>
                             </div>
                         </div>

@@ -68,7 +68,7 @@ var App = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("span", {
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s"
-      }, "High Intensity Training")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
+      }, "Balance Training")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
