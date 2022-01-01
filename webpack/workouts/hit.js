@@ -12,33 +12,17 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		/*fetch('/api/getblogs')
-			.then(res => res.json())
-			.then(json => {
-				this.setState({
-					isLoaded: true,
-					items: json.posts.items,
-				})
 
-			});
-            */
 	}
 
 	render() {
-
-
-		/* var { isLoaded, items } = this.state;
-		if (!isLoaded) {
-			return <div>Loading...</div>
-		} 
-		else*/
 			return (
 				<div className="App">
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-9 col-lg-9 col-md-10">
                                 <div className="hero__caption">
-                                    <span data-animation="fadeInLeft" data-delay="0.09s">Muscle gaining</span>
+                                    <span data-animation="fadeInLeft" data-delay="0.09s">High Intensity Training</span>
                                 </div>
                             </div>
                         </div>

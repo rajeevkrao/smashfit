@@ -7928,5 +7928,10 @@ del {
   }
 }
 
+.form-outline .error{
+  color:yellow !important;
+
+}
+
 
 /*# sourceMappingURL=style.css.map */

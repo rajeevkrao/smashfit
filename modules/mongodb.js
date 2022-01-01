@@ -14,20 +14,50 @@ exports.tokens = (callback) => {
 	})
 }
 
+exports.findUserDoc = (query,callback) =>{
+	MongoClient.connect(uri, function(err, client) {
+		if(err) {
+	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+	  	}
+	  client.db("users").collection("details").findOne(query)
+	  .then((doc)=>{
+		console.log()
+	  })
+	  .catch((err)=>{
+		  console.log(err.code);
+		  if(err.code == 11000)
+		  	err.customInfo = "User already Exist";
+		  callback(err);
+	  })
+	})
+}
 
 exports.addUser = (doc,callback) =>{
 	MongoClient.connect(uri, function(err, client) {
 		if(err) {
 	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
 	  	}
-	  
 	  client.db("users").collection("details").insertOne(doc)
 	  .then(()=>{
 		client.close();
 	  })
-	  .catch(()=>{
-		  callback("User already exist");
+	  .catch((err)=>{
+		  console.log(err.code);
+		  if(err.code == 11000)
+		  	err.customInfo = "User already Exist";
+		  callback(err);
 	  })
+	})
+}
+
+exports.getStats = () => {
+	MongoClient.connect(uri, function(err, client) {
+		if(err) {
+	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+	  	}
+	  	client.db("users").collection("details").stats().then(data=>{
+			  console.log(data)
+		  })
 	})
 }
 
@@ -42,3 +72,8 @@ MongoClient.connect(uri, function(err, client) {
 	client.db("users").collection("tokens").find({})
 	client.close();
 })
+
+/* 
+Error Codes
+11000 - Duplicate key collection  
+*/
