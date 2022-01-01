@@ -11,3 +11,12 @@ MongoClient.connect(uri, function(err, client) {
         client.close();
     })
 });
+
+MongoClient.connect(uri, function(err, client) {
+    if(err) {
+        console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+    }
+    client.db("users").collection("details").createIndex({"email":1}, {unique:true}).then(()=>{
+        client.close();
+    })
+});

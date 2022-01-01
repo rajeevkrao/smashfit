@@ -250,14 +250,17 @@
       console.log(googleUser.getBasicProfile().getId())
       localStorage.setItem("session",{authType:"google", token:googleUser.getAuthResponse().id_token});
       
-      fetch('/save-auth', {
+      fetch('/api/save-auth', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({authType:"google", token:googleUser.getAuthResponse().id_token})
-      });
+      })
+      .then(()=>{
+        window.location.replace("/");
+      })
     }
     function onFailure(error) {
       console.log(error);

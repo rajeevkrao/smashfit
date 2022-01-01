@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
       app: './webpack/app.jsx',
       workouts: './webpack/workouts.jsx'
@@ -65,7 +65,8 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true
-  }/*,
+  },
+  devtool: "source-map",/*,
   watch: true,
   watchOptions: {
     aggregateTimeout: 300,

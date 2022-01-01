@@ -88,47 +88,40 @@
                         alt="Sample image">-->
                     </div>
                     <div  class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                      <form>
-                        
-              
-                    
+                        <div class="error-code"></div>
+                      <form action="/api/register" method="post" id="register-form">
 
                          <!-- fullname input -->
                           <div class="form-outline mb-4">
-                            <input type="Full Name" id="form3Example3" class="form-control form-control-lg"
+                            <input type="text" id="fullname" name="fullname" required class="form-control form-control-lg"
                               placeholder="Enter your Full name" />
-                            <label class="form-label" for="form3Example3">Full Name</label>
+                            <label class="form-label" for="fullname">Full Name</label>
                           </div>
-                          
-                               
-                           
-                  
-              
+
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                          <input type="email" id="form3Example3" class="form-control form-control-lg"
+                          <input type="email" id="email" name="email" required class="form-control form-control-lg"
                             placeholder="Enter a valid email address" />
-                          <label class="form-label" for="form3Example3">Email address</label>
+                          <label class="form-label" for="email">Email address</label>
                         </div>
               
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                          <input type="password" id="form3Example4" class="form-control form-control-lg"
+                          <input type="password" id="password" name="password" required class="form-control form-control-lg"
                             placeholder="Enter password" />
-                          <label class="form-label" for="form3Example4">Create a password</label>
+                          <label class="form-label" for="password">Create a password</label>
                         </div>
 
                         <!-- Re-Password input -->
                         <div class="form-outline mb-3">
-                            <input type="password" id="form3Example4" class="form-control form-control-lg"
+                            <input type="password" id="repassword" name="repassword" required class="form-control form-control-lg"
                               placeholder="Re-Enter password" />
-                            <label class="form-label" for="form3Example4">Re-Enter password</label>
+                            <label class="form-label" for="repassword">Re-Enter password</label>
                           </div>
               
-
-              
                         <div class="text-center text-lg-start mt-4 pt-2">
-                          <button type="button" class="btn"
+                          <button type="button" class="btn g-recaptcha" data-sitekey="6Ld9K94dAAAAAACVVqmRMe1KYi0HwFgVs16p1Xbl" data-callback='onSubmit' 
+                          data-action='submit'
                             style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
                           <p class="small fw-bold mt-2 pt-1 mb-0">Have an account? <a href="/login.html"
                               class="link-danger"><u id='register'>Login</u></a></p>
@@ -138,7 +131,6 @@
                     </div>
                   </div>
                 </div>
-
         </div>
     </div>
 </main>
@@ -248,11 +240,91 @@
 <!-- Jquery Plugins, main Jquery -->	
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
+<script>
+    function onSubmit(token) {
+        if(validateInputs())
+            document.getElementById("register-form").submit();
+    }
 
-  <script>
-      document.querySelector(".starter").style.marginTop = document.querySelector(".header-area").clientHeight + "px"
-  </script>
+    const isValidEmail = email => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function validateInputs(){
+        var flag = 1;
+        var setSuccess = element =>{
+            var parent = element.parentElement;
+            if(parent.querySelector("br"))
+                parent.querySelector("br").remove();
+            if(parent.querySelector("label.error"))
+                parent.querySelector("label.error").remove();
+        }
+        var setError = (element, message) => {
+            var parent = element.parentElement;
+            if(!parent.querySelector('.error')){
+                var br = document.createElement('br');
+                var label = document.createElement('label');
+                label.htmlFor = element.id;
+                label.classList.add("form-label");
+                label.classList.add("error");
+                parent.appendChild(br);
+                parent.appendChild(label);
+            }
+            var errele = parent.querySelector('.error');
+            errele.innerText = message;
+            flag = 0;
+        }
+        var fullname = document.querySelector("#fullname");
+        var email = document.querySelector("#email");
+        var password = document.querySelector("#password");
+        var repassword = document.querySelector("#repassword");
+
+        fullname.value = fullname.value.trim();
+        email.value = email.value.trim();
+        password.value = password.value.trim();;
+        repassword.value = repassword.value.trim();
+        
+
+        if(fullname.value == "")
+            setError(fullname, "Full Name is required");
+        else if(fullname.value.length < 4)
+            setError(fullname, "Full Name must be of atleast 4 characters")
+        else if(fullname.value.length > 24)
+            setError(fullname, "Full Name shouldn't exceed 24 characters")
+        else
+            setSuccess(fullname);
+
+        if(email.value == "")
+            setError(email, "Email is required");
+        else if (!isValidEmail(email.value)) 
+            setError(email, 'Provide a valid email address');
+        else   
+            setSuccess(email);
+
+        if(password.value == "")
+            setError(password, "Password is required");
+        else if(password.value.length < 8)
+            setError(password, "Password must be of atleast 8 characters")
+        else if(password.value.length > 32)
+            setError(password, "Password shouldn't exceed 32 characters")
+        else
+            setSuccess(password);
+
+        if(repassword.value!=password.value)
+            setError(repassword, "Re-Entered Password doesn't match with Password")
+        else
+            setSuccess(repassword)
+
+        return flag;
+    }
+</script>
+
+<script>
+    document.querySelector(".starter").style.marginTop = document.querySelector(".header-area").clientHeight + "px"
+</script>
 
 </body>
 </html>
