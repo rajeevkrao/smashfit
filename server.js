@@ -57,7 +57,10 @@ app.post('/api/register', (req,res)=>{
     })
 	.then((res)=>{
 		if(res.data.success)
-			mongod.addUser({name:req.body.fullname,email:req.body.email,passwordHash:hash(req.body.password),createdUsing:"smashfit"})
+			mongod.addUser({name:req.body.fullname,email:req.body.email,passwordHash:hash(req.body.password),createdUsing:"smashfit"}, err=>{
+				if(err.code == 11000)
+					console.log(err)
+			});
 		else
 			res.redirect("/register.html?error-code=Error%20with%20Captcha%20Please%20Re-Enter%20your%20credentials%20and%20Register")
 	})
