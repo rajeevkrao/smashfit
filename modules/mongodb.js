@@ -21,12 +21,15 @@ exports.findUser = (query,result,errf) =>{
 	})
 }
 
-exports.updateUser = (query, data, errf) =>{
+exports.updateUser = (query, data, errf, callback) =>{
   MongoClient.connect(uri, function(err, client) {
 		if(err) {
 	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
 	  	}
       client.db("users").collection("details").updateOne(query, {$set:data})
+	  .then(()=>{
+		  callback();
+	  })
       .catch((err)=>{
         if(typeof(errf)=="function")
           errf(err);

@@ -63,21 +63,22 @@ app.post('/api/verifyuser',(req,res)=>{
 
 })
 
-app.get('/verifyaccount', (req,res)=>{
+app.get('/verifyaccount', async(req,res)=>{
 	try{
-		var obj = JSON.parse(decrypt(code))
+		var obj = JSON.parse(decrypt(req.query.code))
 		if(!(obj.email) || !(obj.exp)) throw {message:"Invalid Code"};
-		mongod.findUser({email:obj.email},data=>{
+		await mongod.findUser({email:obj.email},data=>{
 			if(data.verified==true){
 				res.redirect("/info.html?message=Your account has been verified already!")
-				return;
+			}
+			else{
+				if(obj.exp < (Date.now())) throw {message:"Code expired"};
+				mongod.updateUser({email:obj.email}, {verified:true},(err)=>{},()=>{
+					res.redirect("/")
+				})
 			}
 		})
-		if(obj.exp < (Date.now())) throw {message:"Code expired"};
-		mongod.updateUser({email:obj.email}, {verified:true})
-		.then(()=>{
-			res.redirect('/')
-		})
+		
 	}
 	catch(err){
 		if(err.message.startsWith("Unexpected token") || err.message=="Invalid Code")
@@ -89,7 +90,7 @@ app.get('/verifyaccount', (req,res)=>{
 				exp: (Date.now()) + 15*60*1000
 			}
 			var code = encrypt(JSON.stringify(code))
-			code = encodeURIcomponent(code);
+			code = encodeURIComponent(code);
 			sendmail({
 				to:req.body.email,
 				subject:"Verify your Smashfit Account",
@@ -136,6 +137,7 @@ app.post('/api/register', (req,res)=>{
     		exp: (Date.now()) + 15*60*1000
 			}
 			var code = encrypt(JSON.stringify(code))
+			console.log(code)
 			code = encodeURIComponent(code);
 			sendmail({
 				to:req.body.email,
