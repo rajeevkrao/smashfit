@@ -1,0 +1,16 @@
+<html>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.get('token')){
+            if(urlParams.get('always'))
+                localStorage.setItem("sf-token", urlParams.get('token'))
+            else if(!urlParams.get('always') || urlParams.get('always') == "0")
+                sessionStorage.setItem("sf-token", urlParams.get('token'))
+        }
+        if(urlParams.get('redirect')){
+            window.location.replace(urlParams.get('redirect'))
+        }
+        else
+            window.location.replace('/')
+    </script>
+</html>

@@ -214,6 +214,9 @@
 
 if(document.querySelector(".starter"))
   document.querySelector(".starter").style.paddingTop = document.querySelector(".header-area").clientHeight + "px"
+document.querySelector("body").onresize = () => {
+  document.querySelector(".starter").style.paddingTop = "2000" + "px"
+}
 
 const urlParams = new URLSearchParams(window.location.search);
 if(urlParams.get('error-code')){
@@ -226,4 +229,6 @@ if(urlParams.get('error-code')){
     error.innerText = urlParams.get('error-code')
   }
 }
+
+
   

@@ -1,52 +1,59 @@
 const MongoClient = require('mongodb').MongoClient;
-require('dotenv').config();
 const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_CLUSTER_CONNECT}`
 
-
-exports.tokens = (callback) => {
-	MongoClient.connect(uri, function(err, client) {
-		if(err) {
-	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-	  }
-
-	  callback(client.db("users").collection("tokens"));
-	  client.close();
-	})
-}
-
-exports.findUserDoc = (query,callback) =>{
+exports.findUser = (query,result,errf) =>{
 	MongoClient.connect(uri, function(err, client) {
 		if(err) {
 	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
 	  	}
 	  client.db("users").collection("details").findOne(query)
 	  .then((doc)=>{
-		console.log()
+    if(typeof(result) == "function")
+      result(doc)
 	  })
 	  .catch((err)=>{
-		  console.log(err.code);
-		  if(err.code == 11000)
-		  	err.customInfo = "User already Exist";
-		  callback(err);
+		  if(typeof(errf) == "function")
+        errf(err);
 	  })
+    .finally(()=>{
+      client.close();
+    })
 	})
 }
 
-exports.addUser = (doc,callback) =>{
-	MongoClient.connect(uri, function(err, client) {
+exports.updateUser = (query, data, errf) =>{
+  MongoClient.connect(uri, function(err, client) {
 		if(err) {
 	    	console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
 	  	}
-	  client.db("users").collection("details").insertOne(doc)
-	  .then(()=>{
-		client.close();
-	  })
-	  .catch((err)=>{
-		  console.log(err.code);
-		  if(err.code == 11000)
-		  	err.customInfo = "User already Exist";
-		  callback(err);
-	  })
+      client.db("users").collection("details").updateOne(query, {$set:data})
+      .catch((err)=>{
+        if(typeof(errf)=="function")
+          errf(err);
+      })
+      .finally(()=>{
+        client.close();
+      })
+  })
+}
+
+exports.addUser = (doc,errf,callback) =>{
+	MongoClient.connect(uri, function(err, client) {
+		if(err) {
+				console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+		}
+		client.db("users").collection("details").insertOne(doc)
+		.then(()=>{
+			callback();
+		})
+		.catch((err)=>{
+			if(err.code == 11000)
+				err.customInfo = "User already Exist";
+			errf(err);
+		})
+		.finally(()=>{
+			client.close();
+		})
 	})
 }
 
@@ -58,6 +65,12 @@ exports.getStats = () => {
 	  	client.db("users").collection("details").stats().then(data=>{
 			  console.log(data)
 		  })
+      .catch(err=>{
+        console.log(err)
+      })
+      .finally(()=>{
+        client.close();
+      })
 	})
 }
 
@@ -67,13 +80,10 @@ MongoClient.connect(uri, function(err, client) {
         return;
     }
 	console.log("mongodb database connected");
-
-	//client.db("users").collection("tokens").find({token})
-	client.db("users").collection("tokens").find({})
 	client.close();
 })
 
 /* 
 Error Codes
-11000 - Duplicate key collection  
+11000 - Duplicate key collection  => A Document already exist with same key and value that is primary key
 */
