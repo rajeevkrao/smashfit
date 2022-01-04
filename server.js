@@ -77,7 +77,7 @@ app.get('/verifyaccount', async(req,res)=>{
 			else{
 				if(obj.exp < (Date.now())) throw {message:"Code expired"};
 				mongod.updateUser({email:obj.email}, {verified:true},(err)=>{},()=>{
-					res.redirect("/")
+					res.redirect("/info.html?message=Your acount has been verified.")
 				})
 			}
 		})
@@ -155,10 +155,28 @@ app.post('/api/register', (req,res)=>{
 							<a href="https://smashfit.herokuapp.com/verifyaccount?code=${code}">Verify<a/>`
 			})
 			var token = jwt.sign({ email:req.body.email, exp: Math.floor(Date.now() / 1000) + 60*60*24*7 }, process.env.CRYPTO_PASS);
-			res.redirect(`/token.html?token=${token}&always=1&redirect=/info.html?message=Thank you for registering on Smashfit.{enter}We have sent verification link to your email, verify by clicing on that link`);
+			res.redirect(`/token.html?token=${token}&always=1&redirect=/info.html?message=Thank you for registering on Smashfit.{enter}We have sent verification link to your email, verify by clicing on that link.{enter}{enter}Check spam folder if not available`);
 		}
 	})
 	
+})
+
+app.post('/api/login',(req,res)=>{
+	console.log(req.body)
+	mongod.findUser({email:req.body.email},data=>{
+		if(hash(req.body.password)!=data.passwordHash)
+			res.redirect("/login.html?error-code=Email or Passowrd is incorrect")
+		else{
+			var token = jwt.sign({ email:req.body.email, exp: Math.floor(Date.now() / 1000) + 60*60*24*7 }, process.env.CRYPTO_PASS);
+			if(req.body.always)
+				res.redirect(`/token.html?token=${token}&always=1&redirect=/`);
+			else
+				res.redirect(`/token.html?token=${token}&redirect=/`);
+		}
+	},err=>{
+		console.log(err)
+		res.redirect("/login.html?error-code=Email or Passowrd is incorrect")
+	})
 })
 
 app.listen(process.env.PORT)
