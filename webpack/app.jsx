@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 //import FacebookLogin from 'react-facebook-login';
-
 //import Routes from './route'
 
 import { Route, Routes } from'react-router-dom';
@@ -21,7 +20,6 @@ render((
   </Routes>
 </BrowserRouter> 
 ), document.getElementById('App'));
-
 
 /*
           <Route exact path='/workout' component={Home}/>

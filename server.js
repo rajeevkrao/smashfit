@@ -35,6 +35,11 @@ app.use(function(request, response, next) {
     if (process.env.NODE_ENV != 'development' && !request.secure) {
        return response.redirect("https://" + request.headers.host + request.url);
     }
+	if (req.headers['x-forwarded-proto'] != "https") {
+        res.redirect('https://' + req.get('host') + req.url);
+    } else {
+        next();     
+    }
     next();
 })
 
@@ -116,8 +121,10 @@ app.post('/api/register', (req,res)=>{
 		var verified = true;
 		if(resp.data.success)
 			await mongod.addUser({name:req.body.fullname,email:req.body.email,passwordHash:hash(req.body.password),createdUsing:"smashfit",verified:false}, async(err)=>{
+				console.log(err)
 				if(err.code == 11000)
 					await mongod.findUser({email:req.body.email},async(data)=>{
+						console.log(data)
 						if(!data.passwordHash){
 							await mongod.updateUser({email:req.body.email},{name:req.body.fullname,passwordHash:hash(req.body.password),verified:false})				
 							verified=false;
@@ -125,6 +132,8 @@ app.post('/api/register', (req,res)=>{
 						}
 						else
 							res.redirect('/login.html?error-code=An%20account%20exists%20with%20that%20email.%20Please%20Login%20or%20Recover%20your%20account%20using%20Forgot%20Password')
+					},err=>{
+						console.log("reaching")
 					})
 			},()=>{
 				vm(res,req.body.email)
