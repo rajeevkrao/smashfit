@@ -35,8 +35,8 @@ app.use(function(request, response, next) {
     if (process.env.NODE_ENV != 'development' && !request.secure) {
        return response.redirect("https://" + request.headers.host + request.url);
     }
-	if (req.headers['x-forwarded-proto'] != "https") {
-        res.redirect('https://' + req.get('host') + req.url);
+	if (request.headers['x-forwarded-proto'] != "https") {
+        response.redirect('https://' + req.get('host') + req.url);
     } else {
         next();     
     }
