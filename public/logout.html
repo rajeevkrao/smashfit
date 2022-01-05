@@ -1,5 +1,7 @@
 <meta name="google-signin-client_id" content="535591460135-2cohhv5q0bijms5u6g5q19r86oljrhe4.apps.googleusercontent.com">
 <script>
+    localStorage.removeItem("sf-token")
+    sessionStorage.removeItem("sf-token")
     function onGAuthLoad(){
     gapi.load('auth2', function() {
         gapi.auth2.init().then(()=>{
@@ -8,13 +10,7 @@
                 console.log('User signed out.');
                 window.location.replace("/");
             });
-        });
-        
-        
-        //console.log(auth2)
-        
-        
-        
+        }); 
     });       
 } 
 </script>

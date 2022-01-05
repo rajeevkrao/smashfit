@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-signin-client_id" content="535591460135-2cohhv5q0bijms5u6g5q19r86oljrhe4.apps.googleusercontent.com">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     
     <!-- CSS here -->
@@ -88,7 +88,8 @@
                         alt="Sample image">-->
                     </div>
                     <div  class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                      <form>
+                      <form method="post" action="/api/login">
+                        <div class="error-code"></div>
                         <div style="text-align:center;" class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                           <div id="my-signin2"></div>
                         </div>
@@ -99,23 +100,23 @@
               
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                          <input type="email" id="form3Example3" class="form-control form-control-lg"
+                          <input type="email" id="email" name="email" required class="form-control form-control-lg"
                             placeholder="Enter a valid email address" />
-                          <label class="form-label" for="form3Example3">Email address</label>
+                          <label class="form-label" for="email">Email address</label>
                         </div>
               
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                          <input type="password" id="form3Example4" class="form-control form-control-lg"
+                          <input type="password" id="password" name="password" required class="form-control form-control-lg"
                             placeholder="Enter password" />
-                          <label class="form-label" for="form3Example4">Password</label>
+                          <label class="form-label" for="password">Password</label>
                         </div>
               
                         <div class="d-flex justify-content-between align-items-center">
                           <!-- Checkbox -->
                           <div class="form-check mb-0">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                            <label class="form-check-label" for="form2Example3">
+                            <input class="form-check-input me-2" type="checkbox" value="true" id="always" name="always" />
+                            <label class="form-check-label" for="always">
                               Remember me
                             </label>
                           </div>
@@ -123,7 +124,7 @@
                         </div>
               
                         <div class="text-center text-lg-start mt-4 pt-2">
-                          <button type="button" class="btn"
+                          <button type="button" onclick="submit()" class="btn"
                             style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                           <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register.html"
                               class="link-danger"><u id='register'>Register</u></a></p>
@@ -245,19 +246,29 @@
 <script src="./assets/js/main.js"></script>
 
 <script>
+  function submit(){
+    document.querySelector("form").submit();
+  }
+</script>
+
+
+<script>
     function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
       console.log(googleUser.getBasicProfile().getId())
       localStorage.setItem("session",{authType:"google", token:googleUser.getAuthResponse().id_token});
       
-      fetch('/save-auth', {
+      fetch('/api/save-auth', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({authType:"google", token:googleUser.getAuthResponse().id_token})
-      });
+      })
+      .then(()=>{
+        window.location.replace("/");
+      })
     }
     function onFailure(error) {
       console.log(error);

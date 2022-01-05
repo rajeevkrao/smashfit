@@ -39,7 +39,7 @@ class App extends Component {
 							return <li key={index}><a href={item.url} style={{ "width": "100%", "display": "block", "whiteSpace": "nowrap", "textOverflow": "ellipsis", "overflow": "hidden" }}>{item.title}</a></li>
 						})}
 					</ul> */}
-                    <div> Hello </div>
+                    <div> Helloa </div>
 				</div>
 			);
 	}

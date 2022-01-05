@@ -1,10 +1,59 @@
-var auth = require("../modules/auth.js");
-// console.log(auth.gauth);
-// 
+require('dotenv').config({ path: '../.env' })
 
-//auth.test();
+const mongod = require('../modules/mongodb.js')
+mongod.addUser({})
 
-auth.gauth(`eyJhbGciOiJSUzI1NiIsImtpZCI6IjAzZTg0YWVkNGVmNDQzMTAxNGU4NjE3NTY3ODY0YzRlZmFhYWVkZTkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTM1NTkxNDYwMTM1LTJjb2hodjVxMGJpam1zNXU2ZzVxMTlyODZvbGpyaGU0LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTM1NTkxNDYwMTM1LTJjb2hodjVxMGJpam1zNXU2ZzVxMTlyODZvbGpyaGU0LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA1ODk1Nzc3NzQxMTIzMjEyNjkxIiwiZW1haWwiOiJyYWplZXZyYW9rQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiMVBvSkduVUEwN3BSN0RKeHVPQWpuZyIsIm5hbWUiOiJSYWplZXYgSyBSYW8iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2ktd01HQjZIV1U5dHR4MDg1dE8tNUplRV9FTHFaNzAwTWJGSDVQUVE9czk2LWMiLCJnaXZlbl9uYW1lIjoiUmFqZWV2IiwiZmFtaWx5X25hbWUiOiJLIFJhbyIsImxvY2FsZSI6ImVuIiwiaWF0IjoxNjQwNzE5NTMwLCJleHAiOjE2NDA3MjMxMzAsImp0aSI6IjBmMzFiOTMxNThjNjljMzdmOWVmNThmNzA2ZTRjZjJiYzRlOWM3ZDcifQ.LwchqudLixUEVsKXUNHm-KKgRZbGjJR9Kn919m4Q3jaraEY2YbAH6b1B92tb7hdJgrduBKPlDzw7gUOP-Agsbq4GN5BRVaUj4Eln_n75B0htxSno4uctV_Q_frWs1cE6lnPSxStfwHcfdIfJl0YgcXHkxpAolMz74m6ihVy8mZNejyAHyScW4i0VPldf0O8KVMYIQmT3nnWloWLS_g1id-2pYDqZvGWEC7uVq_T_K5DgM1WGnFgGpKUtaR_2Ce2oLkmhAS7y0Hv0qxAwBKGZyWiOAd8wvF56R4jN-U-cQCQDYDC1uxuukc40CICiHYqX_yMd5R15X7IbmSRFujEiEA`)
-.then((r)=>{
-    console.log(r)
-})
+/* const jwt = require('jsonwebtoken');
+
+var token = jwt.sign({test:"test"},process.env.CRYPTO_PASS)
+console.log(token)
+jwt.verify(token, process.env.CRYPTO_PASS,(err,data)=>{
+    console.log(data)
+}) */
+/* const crypto = require('crypto')
+const IV_LENGTH = 16;
+const cryptoKey = Buffer.from(process.env.CRYPTO_PASS, "utf-8");
+
+
+var obj = {
+    email:"rajeevraok@gmail.com",
+    exp: (Date.now()) //+ 15*60*1000
+}
+
+var code = encrypt(JSON.stringify(obj));
+console.log(code);
+
+//code = encrypt((JSON.stringify({code:123})))
+try{
+    var objx = JSON.parse(decrypt(code))
+    console.log(objx)
+    console.log(Date.now())
+    if(!(objx.email) || !(objx.exp)) throw {message:"Invalid Code"};
+    if(objx.exp < (Date.now())) throw {message:"Code expired"};
+    console.log("Success")
+}
+catch(err)
+{
+    if(err.message.startsWith('Unexpected token') || err.message == "Invalid Code")
+        console.log("error:",err.message)  
+    else if(err.message == "Code expired")
+        console.log("error:",err.message, objx.email) 
+}
+
+function encrypt(text) {
+    let iv = crypto.randomBytes(IV_LENGTH);
+    let cipher = crypto.createCipheriv('aes-256-ctr', Buffer.from(cryptoKey , 'hex'), iv);
+    let encrypted = cipher.update(text);
+    encrypted = Buffer.concat([encrypted, cipher.final()]);
+    return iv.toString('hex') + ':' + encrypted.toString('hex');
+}
+
+function decrypt(text) {
+    let textParts = text.split(':');
+    let iv = Buffer.from(textParts.shift(), 'hex');
+    let encryptedText = Buffer.from(textParts.join(':'), 'hex');
+    let decipher = crypto.createDecipheriv('aes-256-ctr', Buffer.from(cryptoKey , 'hex'), iv);
+    let decrypted = decipher.update(encryptedText);
+    decrypted = Buffer.concat([decrypted, decipher.final()]);
+    return decrypted.toString();
+} */

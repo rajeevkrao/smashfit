@@ -212,6 +212,23 @@
 
 })(jQuery);
 
+if(document.querySelector(".starter"))
+  document.querySelector(".starter").style.paddingTop = document.querySelector(".header-area").clientHeight + "px"
+document.querySelector("body").onresize = () => {
+  document.querySelector(".starter").style.paddingTop = "2000" + "px"
+}
 
-document.querySelector(".starter").style.paddingTop = document.querySelector(".header-area").clientHeight + "px"
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams.get('error-code')){
+  if(document.querySelector('.error-code')){
+    error = document.querySelector('.error-code');
+    error.style.fontSize = "2em";
+    error.style.color = "yellow";
+    error.style.textAlign = 'center';
+    error.style.margin = "2vh 0";
+    error.innerText = urlParams.get('error-code')
+  }
+}
+
+
   
