@@ -76,14 +76,14 @@ var App = /*#__PURE__*/function (_Component) {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\flutter-kick.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\Aquaman.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\bicycle.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\cat stretch.gif"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
@@ -92,28 +92,28 @@ var App = /*#__PURE__*/function (_Component) {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\Inchworm.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\lunges.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\plank-Taps.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\Superman.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\push-up.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\Skaters.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\Triceps-Dips.gif"
+        src: "..\\assets\\img\\gifs\\without equipments\\Single-Leg-Deadlift.gif"
       })))));
     }
   }]);
@@ -322,14 +322,14 @@ var App = /*#__PURE__*/function (_Component) {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\flutter-kick.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\machinechestpress.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\bicycle.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\latpulldown.gif"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
@@ -338,28 +338,28 @@ var App = /*#__PURE__*/function (_Component) {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\Inchworm.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\deadlifts.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\plank-Taps.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\pullups.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\push-up.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\seated row.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\Triceps-Dips.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\shoulderpress.gif"
       })))));
     }
   }]);
@@ -691,14 +691,14 @@ var App = /*#__PURE__*/function (_Component) {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\flutter-kick.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\exercise-close-grip-bench-press.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\bicycle.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\machinefly.gif"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
@@ -707,28 +707,28 @@ var App = /*#__PURE__*/function (_Component) {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\Inchworm.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\uprightrow.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\plank-Taps.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\chestsuppoted.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\push-up.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\lateralraises.gif"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
         className: "col-xl-6 col-lg-6 col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("img", {
         className: "gifs",
         "data-animation": "fadeInLeft",
         "data-delay": "0.09s",
-        src: "..\\assets\\img\\gifs\\without equipments\\Triceps-Dips.gif"
+        src: "..\\assets\\img\\gifs\\with equipments\\tricepskickback.gif"
       })))));
     }
   }]);
