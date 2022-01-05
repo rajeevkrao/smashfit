@@ -162,7 +162,6 @@ app.post('/api/register', (req,res)=>{
 })
 
 app.post('/api/login',(req,res)=>{
-	console.log(req.body)
 	mongod.findUser({email:req.body.email},data=>{
 		if(hash(req.body.password)!=data.passwordHash)
 			res.redirect("/login.html?error-code=Email or Passowrd is incorrect")
@@ -177,6 +176,28 @@ app.post('/api/login',(req,res)=>{
 		console.log(err)
 		res.redirect("/login.html?error-code=Email or Passowrd is incorrect")
 	})
+})
+
+app.post('/api/forgotpass',(req,res)=>{
+	mongod.findUser({email:req.body.email},data=>{
+		if(data){
+			var code = encrypt(JSON.stringify({email:req.body.email,exp:(Date.now())+1000*60*15}))
+			code = encodeURIComponent(code);
+			sendmail({
+				to:req.body.email,
+				subject:"Reset Password for your smashfit account",
+				html:`You have requested for password reset for your account.<br/>Click on Reset Link Below to reset your password<br><br/><a href="https://smashfit.herokuapp.com/resetpassword.html?code=${code}">Reset</a><br/><br/>If not done by you, ignore this mail.`
+			})
+			res.redirect("/info.html?message=We have sent a reset link to your email.")
+		}
+		else{
+			res.redirect("/forgotpassword.html?error-code=There is no account registered by that email")
+		}
+	})
+})
+
+app.post("/api/resetpass",(req,res)=>{
+	console.log(req.body)
 })
 
 app.listen(process.env.PORT)
