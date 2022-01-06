@@ -217,9 +217,9 @@ app.post("/api/resetpass",(req,res)=>{
 		var pHash = hash(req.body.password)
 		mongod.updateUser({email:obj.email},{passwordHash:pHash},err=>{
 			console.log(err)
-			res.redirect("forgotpassword.html?error-code=Your Account has been deleted. Please register First!")
+			res.redirect("/forgotpassword.html?error-code=Your Account has been deleted. Please register First!")
 		},()=>{
-			res.redirect("info.html?message=New Password has been set for your account!")
+			res.redirect("/info.html?message=New Password has been set for your account!")
 		})
 	}
 	catch(err){
