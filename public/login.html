@@ -256,7 +256,7 @@
     function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
       console.log(googleUser.getBasicProfile().getId())
-      localStorage.setItem("session",{authType:"google", token:googleUser.getAuthResponse().id_token});
+      localStorage.setItem("session",JSON.stringify({authType:"google", token:googleUser.getAuthResponse().id_token}));
       
       fetch('/api/save-auth', {
         method: 'POST',

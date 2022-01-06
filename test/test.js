@@ -1,7 +1,15 @@
 require('dotenv').config({ path: '../.env' })
 
-const mongod = require('../modules/mongodb.js')
-mongod.addUser({})
+// const mongod = require('../modules/mongodb.js')
+// mongod.addUser({})
+
+const sendmail = require("../modules/mail.js")
+
+sendmail({
+    to:"rjvkumaraswamy@gmail.com",
+    subject:"Test Mail",
+    text:"Yes"
+})
 
 /* const jwt = require('jsonwebtoken');
 

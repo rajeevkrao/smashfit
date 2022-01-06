@@ -1,9 +1,9 @@
 var nodemailer = require('nodemailer');
 require('dotenv').config()
 
-module.exports = (options) =>{
+module.exports = (options, errf) =>{
     const transporter = nodemailer.createTransport({
-    host: "smtp.zoho.in",
+    host: process.env.EMAIL_SERVER,
     port: 465,
     secure: true,
     auth: {
@@ -32,6 +32,8 @@ module.exports = (options) =>{
         
     transporter.sendMail(mailOptions, function(error, info){
     if (error) {
+        if(typeof(errf)=="function")
+            errf(error);    
         console.log(error);
     } else {
         console.log('Email sent: ' + info.response);

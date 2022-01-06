@@ -318,6 +318,17 @@
   <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
 <script src="/../assets/js/googleauth.js" ></script>
+<script src="/../assets/js/checkauth.js" ></script>
+
+<script>
+    async function waitgapi(){
+        if(await getAuth() == false){
+            console.log("123")
+            window.location.replace("/info.html?message=You must login to access workout gifs")
+        }
+    }
+</script>
+
 <script src="https://apis.google.com/js/platform.js?onload=onGAuthLoad" async defer></script>
 
 <script src="../workouts.bundle.js" ></script> 

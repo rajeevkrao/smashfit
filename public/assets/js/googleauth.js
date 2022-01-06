@@ -1,19 +1,23 @@
+//Button Auth
+
 function onGAuthLoad(){
+    
     gapi.load('auth2', function() {
         gapi.auth2.init().then(()=>{
             var auth2 = gapi.auth2.getAuthInstance();
-            console.log(auth2.isSignedIn.Mb)
-            if(auth2.isSignedIn.Mb){   
-                document.querySelector("div.header-btns a.btn").innerHTML = "Logout"
-                document.querySelector("div.header-btns a.btn").href = "/logout.html"
-            }
-
+            if(typeof(waitgapi) == "function")
+                setTimeout(waitgapi,500)
+            if(auth2.isSignedIn.Mb)
+                setLogoutButton();
         });
-        
-        
-        //console.log(auth2)
-        
-        
-        
-    });       
+    });   
+    if(sessionStorage.getItem("sf-token"))
+        setLogoutButton();
+    else if(localStorage.getItem("sf-token"))    
+        setLogoutButton();
+
+    function setLogoutButton(){   
+        document.querySelector("div.header-btns a.btn").innerHTML = "Logout"
+        document.querySelector("div.header-btns a.btn").href = "/logout.html"
+    }
 } 

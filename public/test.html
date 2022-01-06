@@ -1,10 +1,11 @@
 <meta name="google-signin-client_id" content="535591460135-2cohhv5q0bijms5u6g5q19r86oljrhe4.apps.googleusercontent.com">
 
-<script src="https://apis.google.com/js/platform.js?onload=onGAuthLoad" async defer></script>
+ <script src="https://apis.google.com/js/platform.js?onload=onGAuthLoad" async defer></script> 
 <a href="#" onclick="inst();">Instance</a>
 
 <a href="#" onclick="signOut();">Sign out</a>
 <script>
+    console.log(localStorage.getItem("session"))
     function onGAuthLoad(){
         gapi.load('auth2', function() {
             gapi.auth2.init();
@@ -14,6 +15,7 @@
         var auth2 = gapi.auth2.getAuthInstance();
         console.log(auth2)
         console.log(auth2.isSignedIn.Mb)
+        console.log(auth2.currentUser.Mb.vc.id_token)
     }
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();

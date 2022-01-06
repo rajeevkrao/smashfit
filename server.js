@@ -179,25 +179,56 @@ app.post('/api/login',(req,res)=>{
 })
 
 app.post('/api/forgotpass',(req,res)=>{
-	mongod.findUser({email:req.body.email},data=>{
-		if(data){
-			var code = encrypt(JSON.stringify({email:req.body.email,exp:(Date.now())+1000*60*15}))
-			code = encodeURIComponent(code);
-			sendmail({
-				to:req.body.email,
-				subject:"Reset Password for your smashfit account",
-				html:`You have requested for password reset for your account.<br/>Click on Reset Link Below to reset your password<br><br/><a href="https://smashfit.herokuapp.com/resetpassword.html?code=${code}">Reset</a><br/><br/>If not done by you, ignore this mail.`
-			})
-			res.redirect("/info.html?message=We have sent a reset link to your email.")
+	console.log(req.body)
+	axios.post('https://www.google.com/recaptcha/api/siteverify', undefined, {
+		params: {
+			secret: process.env.RECAPTCHA_SECRET_KEY,
+			response: req.body['g-recaptcha-response']
 		}
-		else{
-			res.redirect("/forgotpassword.html?error-code=There is no account registered by that email")
-		}
+	})
+	.then(async(resp)=>{
+	if(resp.data.success)
+		mongod.findUser({email:req.body.email},data=>{
+			if(data){
+				var code = encrypt(JSON.stringify({email:req.body.email,exp:(Date.now())+1000*60*15}))
+				code = encodeURIComponent(code);
+				sendmail({
+					to:req.body.email,
+					subject:"Reset Password for your smashfit account",
+					html:`You have requested for password reset for your account.<br/>Click on Reset Link Below to reset your password<br><br/><a href="https://smashfit.herokuapp.com/resetpassword.html?code=${code}">Reset</a><br/><br/>If not done by you, ignore this mail.`
+				})
+				res.redirect("/info.html?message=We have sent a reset link to your email.")
+			}
+			else{
+				res.redirect("/forgotpassword.html?error-code=There is no account registered by that email")
+			}
+		})
+	else
+		res.redirect('/forgotpassword.html?error-code=Error with Captcha. Enter your email again.')
 	})
 })
 
 app.post("/api/resetpass",(req,res)=>{
 	console.log(req.body)
+	try{
+		var obj = JSON.parse(decrypt(req.body.code))
+		if(!(obj.email) || !(obj.exp)) throw {message:"Invalid Code"};
+		if(obj.exp < (Date.now())) throw {message:"Code expired"};
+		var pHash = hash(req.body.password)
+		mongod.updateUser({email:obj.email},{passwordHash:pHash},err=>{
+			console.log(err)
+			res.redirect("forgotpassword.html?error-code=Your Account has been deleted. Please register First!")
+		},()=>{
+			res.redirect("info.html?message=New Password has been set for your account!")
+		})
+	}
+	catch(err){
+		if(err.message.startsWith("Unexpected token") || err.message=="Invalid Code")
+			res.redirect('/forgotpassword.html?error-code=Invalid reset link. Please enter your email again to send Reset Link.');
+		else if(err.message == "Code expired"){
+			res.redirect('/forgotpassword.html?error-code=Reset Link has been expired. Enter your email again to resend Reset Link.');			
+		}
+	}
 })
 
 app.listen(process.env.PORT)
