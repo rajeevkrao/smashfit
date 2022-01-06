@@ -28,24 +28,24 @@ class App extends Component {
                         </div>
                         <div className="row">
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\flutter-kick.gif"/>
+                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\mountain-climbers.gif"/>
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                            	<img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\bicycle.gif"/> 
+                            	<img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\Jump-Squats.gif"/> 
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\Inchworm.gif"/> 
+                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\Frog-Squat-Jump.gif"/> 
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\plank-Taps.gif"/> 
+                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\jumpingjacks.gif"/> 
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\push-up.gif"/> 
+                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\jog.gif"/> 
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\Triceps-Dips.gif"/> 
+                                <img className="gifs" data-animation="fadeInLeft" data-delay="0.09s" src="..\assets\img\gifs\without equipments\burpee.gif"/> 
                             </div>
                         </div>
                     </div>
