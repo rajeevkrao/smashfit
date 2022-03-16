@@ -20,7 +20,6 @@ console.log(process.env.NODE_ENV,"server")
 
 var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
  
-
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -31,7 +30,8 @@ app.use(function(request, response, next) {
 	/*if (process.env.NODE_ENV != 'development' && !request.secure) {
 		return response.redirect("https://" + request.headers.host + request.url);
 	}*/
-	if (process.env.NODE_ENV != 'development' && request.headers['x-forwarded-proto'] != "https") {
+	console.log(request.protocol)
+	if (process.env.NODE_ENV != 'development' && request.protocol != 'https') {
 		app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
         //response.redirect('https://' + request.get('host') + request.url);
     }
