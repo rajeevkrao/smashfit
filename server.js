@@ -19,24 +19,27 @@ console.log(process.env.NODE_ENV,"server")
 
 
 var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
+const secure = require('express-force-https');
+
+app.use(secure);
  
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.use(function(request, response, next) {
-    /* if (process.env.NODE_ENV != 'development' && !request.secure) {
+/* app.use(function(request, response, next) {
+    if (process.env.NODE_ENV != 'development' && !request.secure) {
        return response.redirect("https://" + request.headers.host + request.url);
-    } */
-	/*if (process.env.NODE_ENV != 'development' && !request.secure) {
+    }
+	if (process.env.NODE_ENV != 'development' && !request.secure) {
 		return response.redirect("https://" + request.headers.host + request.url);
-	}*/
+	}
 	console.log(request.protocol)
 	if (process.env.NODE_ENV != 'development' && request.protocol != 'https') {
 		//app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
         response.redirect('https://' + request.get('host') + request.url);
     }
     next();
-})
+}) */
  	
 app.use(express.static('public'))
 app.use(express.static('bundle'))
