@@ -17,21 +17,29 @@ const app = express();
 
 console.log(process.env.NODE_ENV,"server")
 
+
+var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
+ 
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
- 	
-app.use(express.static('public'))
-app.use(express.static('bundle'))
 
 app.use(function(request, response, next) {
     /* if (process.env.NODE_ENV != 'development' && !request.secure) {
        return response.redirect("https://" + request.headers.host + request.url);
     } */
-	if (process.env.NODE_ENV != 'development' && request.headers['x-forwarded-proto'] != "https") {
-        response.redirect('https://' + request.get('host') + request.url);
-    }
+	if (process.env.NODE_ENV != 'development' && !request.secure) {
+		return response.redirect("https://" + request.headers.host + request.url);
+	}
+	/* if (process.env.NODE_ENV != 'development' && request.headers['x-forwarded-proto'] != "https") {
+		app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+        //response.redirect('https://' + request.get('host') + request.url);
+    } */
     next();
 })
+ 	
+app.use(express.static('public'))
+app.use(express.static('bundle'))
 
 app.get('/',(req,res)=>{
 	res.sendFile(__dirname+"/index.html")
