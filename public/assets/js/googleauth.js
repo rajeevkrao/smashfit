@@ -1,4 +1,5 @@
 //Button Auth
+//Changing to Logout Button on Logged in
 
 function onGAuthLoad(){
     
@@ -7,12 +8,8 @@ function onGAuthLoad(){
             var auth2 = gapi.auth2.getAuthInstance()
                 if(typeof(waitgapi) == "function")
                     setTimeout(waitgapi,500)
-                //console.log(auth2.isSignedIn.get())
                 if(auth2.isSignedIn.get())
                     setLogoutButton();
-               
-            
-            
         });
     });   
     if(sessionStorage.getItem("sf-token"))

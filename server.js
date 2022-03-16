@@ -23,14 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static('public'))
 app.use(express.static('bundle'))
 
-app.get('/',(req,res)=>{
-	res.sendFile(__dirname+"/index.html")
-})
-
-app.get('/workouts/*', (req,res)=>{
-	res.sendFile(__dirname+"/views/workouts.html")
-})
-
 app.use(function(request, response, next) {
     /* if (process.env.NODE_ENV != 'development' && !request.secure) {
        return response.redirect("https://" + request.headers.host + request.url);
@@ -39,6 +31,14 @@ app.use(function(request, response, next) {
         response.redirect('https://' + request.get('host') + request.url);
     }
     next();
+})
+
+app.get('/',(req,res)=>{
+	res.sendFile(__dirname+"/index.html")
+})
+
+app.get('/workouts/*', (req,res)=>{
+	res.sendFile(__dirname+"/views/workouts.html")
 })
 
 app.post('/api/save-auth', (req,res)=>{	
