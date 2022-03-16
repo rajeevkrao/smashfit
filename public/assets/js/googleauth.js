@@ -4,11 +4,15 @@ function onGAuthLoad(){
     
     gapi.load('auth2', function() {
         gapi.auth2.init().then(()=>{
-            var auth2 = gapi.auth2.getAuthInstance();
-            if(typeof(waitgapi) == "function")
-                setTimeout(waitgapi,500)
-            if(auth2.isSignedIn.Mb)
-                setLogoutButton();
+            var auth2 = gapi.auth2.getAuthInstance()
+                if(typeof(waitgapi) == "function")
+                    setTimeout(waitgapi,500)
+                //console.log(auth2.isSignedIn.get())
+                if(auth2.isSignedIn.get())
+                    setLogoutButton();
+               
+            
+            
         });
     });   
     if(sessionStorage.getItem("sf-token"))

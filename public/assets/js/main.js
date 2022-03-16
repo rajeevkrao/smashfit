@@ -212,10 +212,11 @@
 
 })(jQuery);
 
-if(document.querySelector(".starter"))
+if(document.querySelector(".starter")){
   document.querySelector(".starter").style.paddingTop = document.querySelector(".header-area").clientHeight + "px"
-document.querySelector("body").onresize = () => {
-  document.querySelector(".starter").style.marginTop = document.querySelector(".header-area").clientHeight + "px"
+  document.querySelector("body").onresize = () => {
+    document.querySelector(".starter").style.marginTop = document.querySelector(".header-area").clientHeight + "px"
+  }
 }
 
 const urlParams = new URLSearchParams(window.location.search);
