@@ -32,8 +32,8 @@ app.use(function(request, response, next) {
 	}*/
 	console.log(request.protocol)
 	if (process.env.NODE_ENV != 'development' && request.protocol != 'https') {
-		app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
-        //response.redirect('https://' + request.get('host') + request.url);
+		//app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+        response.redirect('https://' + request.get('host') + request.url);
     }
     next();
 })
