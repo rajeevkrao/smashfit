@@ -28,13 +28,13 @@ app.use(function(request, response, next) {
     /* if (process.env.NODE_ENV != 'development' && !request.secure) {
        return response.redirect("https://" + request.headers.host + request.url);
     } */
-	if (process.env.NODE_ENV != 'development' && !request.secure) {
+	/*if (process.env.NODE_ENV != 'development' && !request.secure) {
 		return response.redirect("https://" + request.headers.host + request.url);
-	}
-	/* if (process.env.NODE_ENV != 'development' && request.headers['x-forwarded-proto'] != "https") {
+	}*/
+	if (process.env.NODE_ENV != 'development' && request.headers['x-forwarded-proto'] != "https") {
 		app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
         //response.redirect('https://' + request.get('host') + request.url);
-    } */
+    }
     next();
 })
  	
