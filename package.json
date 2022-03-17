@@ -8,6 +8,8 @@
     "dev": "nodemon server",
     "webdev": "webpack --watch --mode development",
     "build": "webpack"
+  },"engines": {
+    "node": "16.x"
   },
   "keywords": [],
   "author": "",
