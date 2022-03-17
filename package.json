@@ -8,8 +8,6 @@
     "dev": "nodemon server",
     "webdev": "webpack --watch --mode development",
     "build": "webpack"
-  },"engines": {
-    "node": "16.x"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +19,7 @@
     "express": "^4.17.1",
     "express-force-https": "^1.0.0",
     "express-http-to-https": "^1.1.4",
-    "google-auth-library": "^0.9.3",
+    "google-auth-library": "^7.11.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.2.2",
     "nodemailer": "^6.7.2",
@@ -46,6 +44,6 @@
     "transform-class-properties": "^1.0.0-beta",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^4.7.1"
   }
 }
