@@ -9,10 +9,6 @@
     "webdev": "webpack --watch --mode development",
     "build": "webpack"
   },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=16.0.0"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
